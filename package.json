@@ -1,12 +1,20 @@
 {
   "name": "node-billingo",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A Node.JS Client for Billingo.hu",
   "main": "index.js",
   "scripts": {
     "test": "standard && PORT=9999 NODE_ENV=test mocha --recursive --reporter spec --bail"
   },
+  "keywords": [
+    "billingo"
+  ],
   "author": "csakbalint",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/csakbalint/node-billingo.git"
+  },
+  "homepage": "https://github.com/csakbalint/node-billingo",
   "license": "MIT",
   "dependencies": {
     "async-class": "^0.4.1",
