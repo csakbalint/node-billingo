@@ -1,0 +1,38 @@
+{
+  "name": "node-billingo",
+  "version": "0.1.0",
+  "description": "A Node.JS Client for Billingo.hu",
+  "main": "index.js",
+  "scripts": {
+    "test": "standard && PORT=9999 NODE_ENV=test mocha --recursive --reporter spec --bail"
+  },
+  "author": "csakbalint",
+  "license": "MIT",
+  "dependencies": {
+    "async-class": "^0.4.1",
+    "bluebird": "^3.3.5",
+    "chai": "^3.4.1",
+    "jwt-simple": "^0.5.0",
+    "md5": "^2.1.0",
+    "merge": "^1.2.0",
+    "moment": "^2.13.0",
+    "request": "^2.72.0",
+    "standard": "^6.0.8"
+  },
+  "devDependencies": {
+    "mocha": "^2.4.5",
+    "co-mocha": "^1.1.2",
+    "sinon": "^1.17.2",
+    "nock": "^3.4.1"
+  },
+  "standard": {
+    "globals": [
+      "describe",
+      "it",
+      "before",
+      "beforeEach",
+      "after",
+      "afterEach"
+    ]
+  }
+}
