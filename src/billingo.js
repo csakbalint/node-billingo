@@ -74,8 +74,15 @@ class Billingo {
     } catch (err) {
       throw new Error(`Not parsable body ${response.body}`)
     }
-    if (!body.success && body.error) throw new Error(body.error)
-    return body.data || null
+    if (body.success) return body.data
+    if (body.error) throw new Error(body.error)
+    if (body.errors) {
+      var error = new Error(`ValidationError via ${route} ${JSON.stringify(body.errors)}`)
+      error.errors = body.errors
+      throw error
+    }
+    // else !(success || error || errors)
+    return null
   }
 
   options (method, route, param) {
