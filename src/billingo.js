@@ -74,7 +74,6 @@ class Billingo {
     } catch (err) {
       throw new Error(`Not parsable body ${response.body}`)
     }
-    console.log(body)
     if (!body.success && body.error) throw new Error(body.error)
     return body.data || null
   }
