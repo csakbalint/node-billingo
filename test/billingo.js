@@ -11,6 +11,9 @@ describe('billingo', function () {
       key: 'working-key'
     })
     expect(this.billingo).to.be.an('object')
+    sinon.stub(this.billingo, 'requestOneAsync', function () {
+      return Array.prototype.slice.call(arguments)
+    })
     sinon.stub(this.billingo, 'requestAsync', function () {
       return Array.prototype.slice.call(arguments)
     })
