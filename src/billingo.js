@@ -20,7 +20,7 @@ class Billingo {
     assert(typeof this._options.key === 'string' && this._options.key.trim().length, 'Valid key missing!')
     assert(typeof this._options.secret === 'string' && this._options.secret.trim().length, 'Valid secret missing!')
     this.invoices = {
-      get: (id) => this.requestAsync('get', `/invoices/${id}`),
+      get: (id) => this.requestOneAsync('get', `/invoices/${id}`),
       list: () => this.requestAsync('get', '/invoices'),
       blocks: () => this.requestAsync('get', '/invoices/blocks'),
       link: (id) => this.requestAsync('get', `/invoices/${id}/code`),
@@ -32,7 +32,7 @@ class Billingo {
       delete: (id) => this.requestAsync('delete', `/invoices/${id}`)
     }
     this.clients = {
-      get: (id) => this.requestAsync('get', `/clients/${id}`),
+      get: (id) => this.requestOneAsync('get', `/clients/${id}`),
       list: () => this.requestAsync('get', '/clients'),
       create: (data) => this.requestAsync('post', '/clients', data),
       update: (id, data) => this.requestAsync('put', `/clients/${id}`, data),
@@ -45,7 +45,7 @@ class Billingo {
       update: (id, data) => this.requestAsync('put', `/expenses/${id}`, data)
     }
     this.bankAccounts = {
-      get: (id) => this.requestAsync('get', `/bank_accounts/${id}`),
+      get: (id) => this.requestOneAsync('get', `/bank_accounts/${id}`),
       list: () => this.requestAsync('get', '/bank_accounts'),
       create: (data) => this.requestAsync('post', '/bank_accounts', data),
       update: (id, data) => this.requestAsync('put', `/bank_accounts/${id}`, data)
@@ -62,6 +62,11 @@ class Billingo {
     }
   }
 
+  * requestOneAsync () {
+    var data = yield this.requestAsync.apply(this, arguments)
+    return data && data.length ? data[0] : data
+  }
+
   * requestAsync (method, route, param) {
     const response = yield request(this.options(method, route, param))
     try {
@@ -69,6 +74,7 @@ class Billingo {
     } catch (err) {
       throw new Error(`Not parsable body ${response.body}`)
     }
+    console.log(body)
     if (!body.success && body.error) throw new Error(body.error)
     return body.data || null
   }
