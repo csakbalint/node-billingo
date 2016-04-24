@@ -27,7 +27,7 @@ class Billingo {
       cancel: (id) => this.requestAsync('get', `/invoices/${id}/cancel`),
       send: (id) => this.requestAsync('get', `/invoices/${id}/send`),
       create: (data) => this.requestAsync('post', '/invoices', data),
-      pay: (id, data) => this.requestAsync('post', '/invoices/${id}/pay', data),
+      pay: (id, data) => this.requestAsync('post', `/invoices/${id}/pay`, data),
       update: (id, data) => this.requestAsync('put', `/invoices/${id}`, data),
       delete: (id) => this.requestAsync('delete', `/invoices/${id}`)
     }
