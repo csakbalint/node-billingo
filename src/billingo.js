@@ -54,7 +54,7 @@ class Billingo {
       get: (langCode) => this.requestAsync('get', `/payment_methods/${langCode}`)
     }
     this.vat = {
-      list: () => this.requestAsync('get', '/vat'),
+      list: (query) => this.requestAsync('get', '/vat', query),
       eu: (query) => this.requestAsync('get', '/vat/eu', query)
     }
     this.currency = {
