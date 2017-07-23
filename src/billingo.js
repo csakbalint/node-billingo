@@ -114,7 +114,8 @@ class Billingo {
   }
 
   token () {
-    const ts = moment().unix()
+    const ts = moment().add(-10, 'seconds').unix();
+    
     return jwt.encode({
       sub: this._options.key,
       iat: ts,
