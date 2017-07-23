@@ -119,7 +119,7 @@ class Billingo {
     return jwt.encode({
       sub: this._options.key,
       iat: ts,
-      exp: moment().add(70, 'seconds').unix(),
+      exp: moment().add(60, 'seconds').unix(),
       iss: 'cli',
       jti: md5(this._options.key + ts)
     }, this._options.secret)
