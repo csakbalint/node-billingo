@@ -18,7 +18,7 @@ const billingo = new Billing({
 })
 ```
 
-## Avaliable methods:
+## Available methods:
 
 ```js
 // Invoices:
